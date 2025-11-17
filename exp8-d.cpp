@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+class Base {
+public:
+    void showBase() {
+        cout << "Base class method" << endl;
+    }
+};
+
+class Derived1 : virtual public Base {
+public:
+    void showDerived1() {
+        cout << "Derived1 class method \n" << endl;
+    }
+};
+
+class Derived2 : virtual public Base {
+public:
+    void showDerived2() {
+        cout << "Derived2 class method \n" << endl;
+    }
+};
+
+class Derived3 : public Derived1, public Derived2 {
+public:
+    void showDerived3() {
+        cout << "Derived3 class method \n" << endl;
+    }
+};
+
+int main() {
+    
+    Derived1 d1;
+    Derived2 d2;
+    Derived3 d3;
+
+    d1.showBase();    
+    d1.showDerived1(); 
+
+    d2.showBase();     
+    d2.showDerived2();
+
+    d3.showBase();
+    d3.showDerived3();
+
+    return 0;
+}
