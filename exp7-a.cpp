@@ -1,46 +1,41 @@
 #include <iostream>
 using namespace std;
 
-class Number {
+class Complex {
 private:
-    int value;
+    double real;
+    double imag;
 public:
-    Number(int v) {
-      value = v;
-    }
+    Complex(double r = 0, double i = 0) : real(r), imag(i) {}
 
     // Binary operator overloading: +
-    Number operator+(const Number& other) {
-        return Number(value + other.value);
+    Complex operator+(const Complex& other) {
+        return Complex(real + other.real, imag + other.imag);
     }
 
     // Unary operator overloading: -
-    Number operator-() {
-        return Number(-value);
+    Complex operator-() {
+        return Complex(-real, -imag);
     }
 
     // Function overloading: display
     void display() {
-        cout << "Value: " << value << endl;
+        cout << "Complex: " << real << " + " << imag << "i" << endl;
     }
 
     void display(string msg) {
-        cout << msg << ": " << value << endl;
+        cout << msg << ": " << real << " + " << imag << "i" << endl;
     }
 };
 
 int main() {
-    Number n1(5), n2(3);
-    Number sum = n1 + n2;  // Binary +
-    Number neg = -n1;      // Unary -
+    Complex c1(3.0, 4.0), c2(1.0, 2.0);
+    Complex sum = c1 + c2;  // Binary +
+    Complex neg = -c1;      // Unary -
 
-  // Function overloading: no param
-    n1.display();
-    n2.display();
-
-  // Function overloading: with param
+    c1.display();          
     sum.display("Sum");     
-    neg.display("Negative");
+    neg.display("Negative"); 
 
     return 0;
 }
